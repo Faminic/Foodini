@@ -1,0 +1,49 @@
+body {
+    padding-top: 250px;
+    align: center;
+}
+
+#whole {
+	border-color: #ccc;
+	/*box-shadow: 10px 10px 20px #E5E7E9;*/
+}
+
+#loginbg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.card-header {
+  color: #00415d;
+	background-color: #F5B041;
+	border-color: #ffffff;
+	text-align: center;
+}
+
+#login-link {
+  text-decoration: none;
+	color: #0E6655;
+	font-weight: bold;
+	font-size: 18px;
+	transition: all 0.1s linear;
+}
+
+#register-link {
+  text-decoration: none;
+	color: #34495E;
+	font-weight: bold;
+	font-size: 13px;
+	transition: all 0.1s linear;
+}
+
+.signup-button {
+  float: left;
+  color: #17202A;
+  background-color: #2ECC71;
+  border-color: #2ECC71;
+}
