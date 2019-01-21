@@ -3,20 +3,50 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstr ap/4.2.1/js/bootstrap.min.js"></script>
+    <!-- Latest compiled Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="home.css">
+
 
     <title>Foodini - Good Food, Good Mood</title>
   </head>
-  
-  <body>
+
+  <body data-spy="scroll" data-target="#menu">
+    <!-- Start Items Section -->
+    <div id="home">
+      <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="public/logo.png" alt="Foodini"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#home">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#expiry">EXPIRY</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#storage">STORAGE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#edit">EDIT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div><!-- End Items Section -->
+
+
 
   </body>
 </html>
