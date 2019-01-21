@@ -42,21 +42,22 @@ app.get("/people/:username", function(req,res){
 })
 
 app.post("/people", function(req,res){
-  if(req.body.access_token!= "concertina"){
+  var ans = req.body
+  if(ans.access_token!= "concertina"){
     res.status(403).send("You do not have permission for this request.")
     return
   }
   //the above checks if the client is an admin or not
 
   for(var i in people){
-    if(req.body.username == people[i].username){
+    if(ans.username == people[i].username){
       res.status(400).send("This username has already been taken.")
       return
     }
   }
   //the above checks if the username already exists
 
-  people.push({username: req.body.username, forename: req.body.forename, surname: req.body.surname})
+  people.push({username: ans.username, forename: ans.forename, surname: ans.surname})
   peopleJ = JSON.stringify(people)
   fs.writeFile("allUsers.txt", peopleJ, function(err){
     if (err) {
