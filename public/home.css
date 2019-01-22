@@ -1,3 +1,16 @@
-.navbar-brand img{
+.navbar {
+  background-color: #E67E22;
+}
+
+.navbar-brand img {
   height: 4rem;
+}
+
+#behindNavBar {
+  height: 120px;
+}
+
+#home-header {
+  background-color: #FDEBD0;
+  color: #616A6B;
 }
