@@ -4,7 +4,7 @@
 }
 
 body {
-    padding-top: 250px;
+    padding-top: 100px;
     align: center;
 }
 
@@ -34,11 +34,11 @@ body {
   padding: 2rem;
 }
 
-#login-form{
+#login-form, #register-form{
   width: 100%;
 }
 
-#login-form .btn {
+#login-form .btn, #register-form .btn {
   font-size: 80%;
   border-radius: 5rem;
   letter-spacing: .1rem;
@@ -47,29 +47,28 @@ body {
   transition: all 0.2s;
 }
 
-.form-label-group {
+.form-group {
   position: relative;
   margin-bottom: 1rem;
 }
 
-.form-label-group input {
+.form-group input {
   height: auto;
   border-radius: 2rem;
 }
 
-.form-label-group>input,
-.form-label-group>label {
+.form-group input,
+.form-group label {
   padding: var(--input-padding-y) var(--input-padding-x);
 }
 
-.form-label-group>label {
+.form-group label {
   position: absolute;
   top: 0;
   left: 0;
   display: block;
   width: 100%;
   margin-bottom: 0;
-  /* Override default `<label>` margin */
   line-height: 1.5;
   color: #495057;
   border: 1px solid transparent;
@@ -77,12 +76,12 @@ body {
   transition: all .1s ease-in-out;
 }
 
-.form-label-group input:not(:placeholder-shown) {
+.form-group input:not(:placeholder-shown) {
   padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
   padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
-.form-label-group input:not(:placeholder-shown)~label {
+.form-group input:not(:placeholder-shown)~label {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;

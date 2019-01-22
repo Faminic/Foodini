@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <!-- Latest compiled Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="login.css">
+
+    <title>Login</title>
+  </head>
+  <body>
+    <img src="images/loginbg.jpg" id="loginbg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card" id="whole">
+            <div class="card-body">
+              <h5 class="text-center" id="title">Sign In</h5>
+              <!-- Change action attribute later -->
+              <form id="login-form" action="localhost:8080/people" method="post" role="form" style="display: block;">
+                <div class="form-group">
+                  <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+                  <label for="username">Username</label>
+                </div>
+                <div class="form-group">
+                  <input type="password" id="password" class="form-control" placeholder="Password" required>
+                  <label for="password">Password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" id="login-button" type="submit">sign in</button>
+                <hr class="my-4">
+                <button class="btn btn-lg btn-info btn-block text-uppercase" id="goRegister-button" type="submit">click here to register</button>
+              </form>
+              <!-- Change action attribute later -->
+              <form id="register-form" action="localhost:8080/people" method="post" role="form" style="display: none;">
+                <div class="form-group">
+                  <input type="text" id="usernameR" class="form-control" placeholder="Username" required>
+                  <label for="usernameR">Username</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="fname" class="form-control" placeholder="First Name" required>
+                  <label for="fname">First Name</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="sname" class="form-control" placeholder="Last Name" required>
+                  <label for="sname">Last Name</label>
+                </div>
+                <div class="form-group">
+                  <input type="password" id="passwordR" class="form-control" placeholder="Password" required>
+                  <label for="passwordR">Password</label>
+                </div>
+                <div class="form-group">
+                  <input type="password" id="passwordC" class="form-control" placeholder="Confirm Password" required>
+                  <label for="passwordC">Confirm Password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" id="register-button" type="submit">register</button>
+                <hr class="my-4">
+                <button class="btn btn-lg btn-info btn-block text-uppercase" id="backLogin-button" type="submit">go back to login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="login.js"></script>
+  </body>
+</html>
