@@ -5,24 +5,16 @@ var app = express();
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+//app.use(express.static("public"));
 
-var fs = require("fs");
+//var fs = require("fs"); //only need this when permanently storing users
 
 
-/*var people = [{"username":"doctorwhocomposer", "forename":"Delia", "surname":"Derbyshire"}];
-//people contains list of users
-var peopleJ = JSON.stringify(people);
+var people = [{"username":"doctorwhocomposer", "forename":"Delia", "surname":"Derbyshire", "password":"iamsteven", "access_token":"concertina"}];
 
-fs.writeFile("allUsers.txt", peopleJ, function(err){
-  if (err) {
-    console.log(err)
-  }
-}) */
-//Make sure to reset your allUsers file to only contain this: [{"username":"doctorwhocomposer", "forename":"Delia", "surname":"Derbyshire"}]
-
+/*var peopleJ = JSON.stringify(people);
 var people = JSON.parse(fs.readFileSync('allUsers.txt', 'utf8'))
-var peopleJ = JSON.stringify(people)
+var peopleJ = JSON.stringify(people)*/ //only need this when permanently storing users
 
 app.get("/", function(req, res){
   res.status(200).json(people)
@@ -57,14 +49,15 @@ app.post("/people", function(req,res){
   }
   //the above checks if the username already exists
 
-  people.push({username: ans.username, forename: ans.forename, surname: ans.surname})
-  peopleJ = JSON.stringify(people)
+  people.push({username: ans.username, forename: ans.forename, surname: ans.surname, password: ans.password, access_token: undefined})
+
+  /*peopleJ = JSON.stringify(people)
   fs.writeFile("allUsers.txt", peopleJ, function(err){
     if (err) {
       console.log(err)
     }
-  })
-  //the above adds the user to the text file "allUsers"
+  }) */ //only need this when permanently storing users
+
   res.send("The request was successful")
 })
 
