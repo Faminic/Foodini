@@ -5,7 +5,9 @@ var app = express();
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//app.use(express.static("public"));
+app.use(express.static("public"));
+
+var path = require("path");
 
 //var fs = require("fs"); //only need this when permanently storing users
 
@@ -61,6 +63,17 @@ app.post("/people", function(req,res){
   res.send("The request was successful")
 })
 
+app.get("/login/people", function(req,res){
+  var info = []
+  for(var i in people){
+    info.push({username: people[i].username, password: people[i].password})
+  }
+  res.send(info)
+})
+
+app.get("/home", function(req,res){
+  res.sendFile(path.join(__dirname,"/public/home.html"))
+})
 
 
 
