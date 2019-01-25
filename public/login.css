@@ -87,3 +87,25 @@ body {
   font-size: 12px;
   color: #777;
 }
+
+.navbar {
+  background-color: #E67E22;
+}
+
+.navbar-brand img {
+  height: 4rem;
+}
+
+#behindNavBar {
+  height: 30px;
+}
+
+#home-header {
+  background-color: #FDEBD0;
+  color: #616A6B;
+}
+
+#home-pointer {
+  color: #FFFFFF;
+  font-weight: bold;
+}
