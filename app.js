@@ -36,7 +36,7 @@ app.get("/people/:username", function(req,res){
 })
 
 app.post("/people", function(req,res){
-  var ans = req.headers
+  var ans = req.body //change to .header if needed
   if(ans.access_token!= "concertina"){
     res.status(403).send("You do not have permission for this request.")
     return

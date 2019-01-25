@@ -6,19 +6,20 @@ $(document).ready(function(){
     e.preventDefault();
    })
 
-  $("#goRegister-button").click(function(e){
+  $("#goRegister-button").click(function(e) {
     $("#register-form").delay(100).fadeIn(100);
     $("#login-form").fadeOut(100);
     e.preventDefault();
   })
 
-  $("#login-form").on("submit", function() {
+  $("#login-form").on("submit", function() { //need to add sessions as well
     var username = $("#username").val()
     var password = $("#password").val()
     $.get("/login/people", function(data){
-      console.log(data)
+      var found = false
       for (var i = 0; i < data.length; i++) {
         if (data[i].username == username && data[i].password == password) {
+          found = true
           $("#home-page").delay(100).fadeIn(100);
           $("#login-page").fadeOut(100);
           //add a loading screen and more delay
@@ -26,7 +27,47 @@ $(document).ready(function(){
           $(document).attr("title", "Foodini - Good Food, Good Mood")
         }
       }
+      if(found==false){
+        //send user notification that the given username or password do not associate to any user
+      }
     })
+  })
+
+  $("#register-form").on("submit", function() { 
+    var usernameR = $("#usernameR").val()
+    var fname = $("#fname").val()
+    var sname = $("#sname").val()
+    var passwordR = $("#passwordR").val()
+    var passwordC = $("#passwordC").val()
+    if (passwordR!=passwordC) {
+      //send user notification that passwordC is wrong
+      $("#passwordR").val("")
+      $("#passwordC").val("")
+    }
+    else {
+      $.post("/people",
+      {
+        username: usernameR,
+        forename: fname,
+        surname: sname,
+        password: passwordR,
+        access_token: "concertina" //just keep this for now
+      },
+      function(data) {
+        //have to fix the two statements below inside the if statements ->they don't work
+        if (status == "403") {
+          //send user notification that he doesnt have permission
+        }
+        else if (status == "400") {
+          //send user notification that username has already been taken
+        }
+        else {
+          //let user know that the registration was successful
+          $("#login-form").delay(100).fadeIn(100);
+          $("#register-form").fadeOut(100);
+        }
+      })
+    }
   })
 
   $('#home-pointer').click(function(e) {
