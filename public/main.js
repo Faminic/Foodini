@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  //Login Page stuff starts here
+
   $('#backLogin-button').click(function(e) {
     $("#login-form").delay(100).fadeIn(100);
     $("#register-form").fadeOut(100);
@@ -33,7 +35,7 @@ $(document).ready(function(){
     })
   })
 
-  $("#register-form").on("submit", function() { 
+  $("#register-form").on("submit", function() {
     var usernameR = $("#usernameR").val()
     var fname = $("#fname").val()
     var sname = $("#sname").val()
@@ -70,6 +72,8 @@ $(document).ready(function(){
     }
   })
 
+  //Home Page stuff starts here
+  
   $('#home-pointer').click(function(e) {
     $("#home").delay(100).fadeIn(100);
     $("#storage").fadeOut(100);
