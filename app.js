@@ -64,6 +64,8 @@ app.post("/people", function(req,res){
   res.send("The request was successful")
 })
 
+//own functions start here
+
 app.get("/login/people", function(req,res){
   var info = []
   for(var i in people){
