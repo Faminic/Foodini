@@ -17,7 +17,9 @@
     <title>Login</title>
   </head>
   <body>
+
     <!--LOGIN PAGE STARTS HERE -->
+
     <div id="login-page" style="display: block;" >
       <img src="images/loginbg.jpg" id="loginbg">
       <div class="container">
@@ -37,6 +39,14 @@
                     <label for="password">Password</label>
                   </div>
                   <button class="btn btn-lg btn-primary btn-block text-uppercase" id="login-button" type="submit">sign in</button>
+                  <div class="btn btn-lg btn-danger btn-block text-uppercase" id="login-alert" style="display: none;">
+                    <span class="closebtn" id="login-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                    wrong user credentials
+                  </div>
+                  <div class="btn btn-lg btn-success btn-block text-uppercase" id="register-success" style="display: none;">
+                    <span class="closebtn" id="login-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                    register was successful
+                  </div>
                   <hr class="my-4">
                   <button class="btn btn-lg btn-info btn-block text-uppercase" id="goRegister-button" type="submit">click here to register</button>
                 </form>
@@ -63,6 +73,14 @@
                     <label for="passwordC">Confirm Password</label>
                   </div>
                   <button class="btn btn-lg btn-primary btn-block text-uppercase" id="register-button" type="submit">register</button>
+                  <div class="btn btn-lg btn-danger btn-block text-uppercase" id="register-alert-username" style="display: none;">
+                    <span class="closebtn" id="register-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                    username has already been taken
+                  </div>
+                  <div class="btn btn-lg btn-danger btn-block text-uppercase" id="register-alert-password" style="display: none;">
+                    <span class="closebtn" id="register-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                    passwords do not match up
+                  </div>
                   <hr class="my-4">
                   <button class="btn btn-lg btn-info btn-block text-uppercase" id="backLogin-button" type="submit">go back to login</button>
                 </form>
@@ -72,7 +90,9 @@
         </div>
       </div>
     </div>
+
     <!--HOME PAGE STARTS HERE -->
+
     <div id="home-page" style="display: none;">
       <nav class="navbar navbar-dark navbar-expand-md fixed-top">
         <div class="container-fluid">

@@ -5,16 +5,29 @@ $(document).ready(function(){
   $('#backLogin-button').click(function(e) {
     $("#login-form").delay(100).fadeIn(100);
     $("#register-form").fadeOut(100);
+    $("#register-alert-username").fadeOut(100);
+    $("#register-alert-password").fadeOut(100);
+    $("#usernameR").val("")
+    $("#fname").val("")
+    $("#sname").val("")
+    $("#passwordR").val("")
+    $("#passwordC").val("")
     e.preventDefault();
    })
 
   $("#goRegister-button").click(function(e) {
     $("#register-form").delay(100).fadeIn(100);
     $("#login-form").fadeOut(100);
+    $("#login-alert").fadeOut(100);
+    $("#register-success").fadeOut(100);
+    $("#username").val("")
+    $("#password").val("")
     e.preventDefault();
   })
 
   $("#login-form").on("submit", function() { //need to add sessions as well
+    $("#login-alert").fadeOut(100);
+    $("#register-success").fadeOut(100);
     var username = $("#username").val()
     var password = $("#password").val()
     $.get("/login/people", function(data){
@@ -25,55 +38,62 @@ $(document).ready(function(){
           $("#home-page").delay(100).fadeIn(100);
           $("#login-page").fadeOut(100);
           //add a loading screen and more delay
-          //also add a notification during loading that login was successful
           $(document).attr("title", "Foodini - Good Food, Good Mood")
         }
       }
       if(found==false){
-        //send user notification that the given username or password do not associate to any user
+        $("#username").val("")
+        $("#password").val("")
+        $("#login-alert").delay(100).fadeIn(100);
       }
     })
   })
 
   $("#register-form").on("submit", function() {
+    $("#register-alert-username").fadeOut(100);
+    $("#register-alert-password").fadeOut(100);
     var usernameR = $("#usernameR").val()
     var fname = $("#fname").val()
     var sname = $("#sname").val()
     var passwordR = $("#passwordR").val()
     var passwordC = $("#passwordC").val()
     if (passwordR!=passwordC) {
-      //send user notification that passwordC is wrong
       $("#passwordR").val("")
       $("#passwordC").val("")
+      $("#register-alert-password").delay(100).fadeIn(100);
     }
     else {
-      $.post("/people",
-      {
-        username: usernameR,
-        forename: fname,
-        surname: sname,
-        password: passwordR,
-        access_token: "concertina" //just keep this for now
-      },
-      function(data) {
-        //have to fix the two statements below inside the if statements ->they don't work
-        if (status == "403") {
-          //send user notification that he doesnt have permission
-        }
-        else if (status == "400") {
-          //send user notification that username has already been taken
-        }
-        else {
-          //let user know that the registration was successful
+      $.ajax({
+        url: "/people",
+        type: "POST",
+        async: true,
+        data: {
+                username: usernameR,
+                forename: fname,
+                surname: sname,
+                password: passwordR,
+                access_token: "concertina" //just keep this for now
+              },
+        success: function(data){
           $("#login-form").delay(100).fadeIn(100);
+          $("#register-success").delay(100).fadeIn(100);
           $("#register-form").fadeOut(100);
+          $("#username").val(usernameR)
+          $("#password").val(passwordR)
+
+        },
+        error: function(xhr, status, error){
+          $("#register-alert-username").delay(100).fadeIn(100);
+          $("#usernameR").val("")
         }
       })
+
+
     }
   })
 
   //Home Page stuff starts here
-  
+
   $('#home-pointer').click(function(e) {
     $("#home").delay(100).fadeIn(100);
     $("#storage").fadeOut(100);
