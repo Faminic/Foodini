@@ -12,188 +12,81 @@
     <!-- Latest compiled Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="login.css">
 
     <title>Login</title>
+
   </head>
+
   <body>
-
-    <!--LOGIN PAGE STARTS HERE -->
-
-    <div id="login-page" style="display: block;" >
-      <img src="images/loginbg.jpg" id="loginbg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 mx-auto">
-            <div class="card" id="whole">
-              <div class="card-body">
-                <h5 class="text-center" id="title">Sign In</h5>
-                <!-- Change action attribute later -->
-                <form id="login-form" action="localhost:8080/people" method="post" role="form" style="display: block;">
-                  <div class="form-group">
-                    <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
-                    <label for="username">Username</label>
-                  </div>
-                  <div class="form-group">
-                    <input type="password" id="password" class="form-control" placeholder="Password" required>
-                    <label for="password">Password</label>
-                  </div>
-                  <button class="btn btn-lg btn-primary btn-block text-uppercase" id="login-button" type="submit">sign in</button>
-                  <div class="btn btn-lg btn-danger btn-block text-uppercase" id="login-alert" style="display: none;">
-                    <span class="closebtn" id="login-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
-                    wrong user credentials
-                  </div>
-                  <div class="btn btn-lg btn-success btn-block text-uppercase" id="register-success" style="display: none;">
-                    <span class="closebtn" id="login-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
-                    register was successful
-                  </div>
-                  <hr class="my-4">
-                  <button class="btn btn-lg btn-info btn-block text-uppercase" id="goRegister-button" type="submit">click here to register</button>
-                </form>
-                <!-- Change action attribute later -->
-                <form id="register-form" action="localhost:8080/people" method="post" role="form" style="display: none;">
-                  <div class="form-group">
-                    <input type="text" id="usernameR" class="form-control" placeholder="Username" required>
-                    <label for="usernameR">Username</label>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" id="fname" class="form-control" placeholder="First Name" required>
-                    <label for="fname">First Name</label>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" id="sname" class="form-control" placeholder="Last Name" required>
-                    <label for="sname">Last Name</label>
-                  </div>
-                  <div class="form-group">
-                    <input type="password" id="passwordR" class="form-control" placeholder="Password" required>
-                    <label for="passwordR">Password</label>
-                  </div>
-                  <div class="form-group">
-                    <input type="password" id="passwordC" class="form-control" placeholder="Confirm Password" required>
-                    <label for="passwordC">Confirm Password</label>
-                  </div>
-                  <button class="btn btn-lg btn-primary btn-block text-uppercase" id="register-button" type="submit">register</button>
-                  <div class="btn btn-lg btn-danger btn-block text-uppercase" id="register-alert-username" style="display: none;">
-                    <span class="closebtn" id="register-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
-                    username has already been taken
-                  </div>
-                  <div class="btn btn-lg btn-danger btn-block text-uppercase" id="register-alert-password" style="display: none;">
-                    <span class="closebtn" id="register-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
-                    passwords do not match up
-                  </div>
-                  <hr class="my-4">
-                  <button class="btn btn-lg btn-info btn-block text-uppercase" id="backLogin-button" type="submit">go back to login</button>
-                </form>
-              </div>
+    <img src="images/loginbg.jpg" id="loginbg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card" id="whole">
+            <div class="card-body">
+              <h5 class="text-center" id="title">Sign In</h5>
+              <!-- Change action attribute later -->
+              <form id="login-form" action="localhost:8080/people" method="post" role="form" style="display: block;">
+                <div class="form-group">
+                  <input type="text" id="username" class="form-control" placeholder="Username" required autofocus>
+                  <label for="username">Username</label>
+                </div>
+                <div class="form-group">
+                  <input type="password" id="password" class="form-control" placeholder="Password" required>
+                  <label for="password">Password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" id="login-button" type="submit">sign in</button>
+                <div class="btn btn-lg btn-danger btn-block text-uppercase" id="login-alert" style="display: none;">
+                  <span class="closebtn" id="login-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                  wrong user credentials
+                </div>
+                <div class="btn btn-lg btn-success btn-block text-uppercase" id="register-success" style="display: none;">
+                  <span class="closebtn" id="login-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                  register was successful
+                </div>
+                <hr class="my-4">
+                <button class="btn btn-lg btn-info btn-block text-uppercase" id="goRegister-button" type="submit">click here to register</button>
+              </form>
+              <!-- Change action attribute later -->
+              <form id="register-form" action="localhost:8080/people" method="post" role="form" style="display: none;">
+                <div class="form-group">
+                  <input type="text" id="usernameR" class="form-control" placeholder="Username" required>
+                  <label for="usernameR">Username</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="fname" class="form-control" placeholder="First Name" required>
+                  <label for="fname">First Name</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="sname" class="form-control" placeholder="Last Name" required>
+                  <label for="sname">Last Name</label>
+                </div>
+                <div class="form-group">
+                  <input type="password" id="passwordR" class="form-control" placeholder="Password" required>
+                  <label for="passwordR">Password</label>
+                </div>
+                <div class="form-group">
+                  <input type="password" id="passwordC" class="form-control" placeholder="Confirm Password" required>
+                  <label for="passwordC">Confirm Password</label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" id="register-button" type="submit">register</button>
+                <div class="btn btn-lg btn-danger btn-block text-uppercase" id="register-alert-username" style="display: none;">
+                  <span class="closebtn" id="register-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                  username has already been taken
+                </div>
+                <div class="btn btn-lg btn-danger btn-block text-uppercase" id="register-alert-password" style="display: none;">
+                  <span class="closebtn" id="register-alert-close" onclick="this.parentElement.style.display='none'">&times;</span>
+                  passwords do not match up
+                </div>
+                <hr class="my-4">
+                <button class="btn btn-lg btn-info btn-block text-uppercase" id="backLogin-button" type="submit">go back to login</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!--HOME PAGE STARTS HERE -->
-
-    <div id="home-page" style="display: none;">
-      <nav class="navbar navbar-dark navbar-expand-md fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Foodini" id="logo"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#home" id="home-pointer">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#storage" id="storage-pointer">Storage</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#expiry" id="expiry-pointer">Expiry</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#account" id="account-pointer">Account</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <div id="home">
-        <!--This just hides behind navbar for website formatting-->
-        <div class="container-fluid">
-          <div class="row" id="behindNavBar">
-          </div>
-        </div>
-        <!--Start coding homepage below with div tag-->
-        <!--This will be a header/landing page for the homepage-->
-        <div class="container-fluid">
-          <div class="jumbotron" id="home-header">
-            <h1 class="display-7 text-center">Welcome to Foodini</h1>
-            <h4 class="text-center">Good Food = Good Mood</h1>
-            <div class="row pt-4">
-              <div class="col-md-4 text-center">
-                <h4>Food Inventory</h4>
-                <p>Start tracking what food you have in the kitchen and make your life easier</p>
-              </div>
-              <div class="col-md-4 text-center">
-                <h4>Storage</h4>
-                <p>Stop asking your housemate to borrow their storage space and know where everything is</p>
-              </div>
-              <div class="col-md-4 text-center">
-                <h4>Expiration Dates</h4>
-                <p>Stop worrying about expiration dates or food waste and comfortably plan ahead</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container-fluid">
-          <h4 class="text-center pb-4">Food Inventory</h4>
-          <div class="jumbotron">
-
-          </div>
-        </div>
-      </div> <!-- End Home Section -->
-
-
-      <div id="storage" style="display: none;">    <!-- Start Storage Section -->
-        <!--This just hides behind navbar for website formatting-->
-        <div class="container-fluid">
-          <div class="row" id="behindNavBar">
-          </div>
-        </div>
-        <!--Start coding storage below with div tag-->
-        <div class="jumbotron">
-          <h1 class="text-center">THIS IS STORAGE</h1>
-        </div>
-      </div> <!-- End Storage Section -->
-
-      <div id="expiry" style="display: none;">    <!-- Start Expiry Section -->
-        <!--This just hides behind navbar for website formatting-->
-        <div class="container-fluid">
-          <div class="row" id="behindNavBar">
-          </div>
-        </div>
-        <!--Start coding expiry below with div tag-->
-        <div class="jumbotron">
-          <h1 class="text-center">THIS IS EXPIRY</h1>
-        </div>
-      </div> <!-- End Expiry Section -->
-
-      <div id="account" style="display: none;">    <!-- Start Account Section -->
-        <!--This just hides behind navbar for website formatting-->
-        <div class="container-fluid">
-          <div class="row" id="behindNavBar">
-          </div>
-        </div>
-        <!--Start coding account below with div tag-->
-        <div class="jumbotron">
-          <h1 class="text-center">THIS IS ACCOUNT</h1>
-        </div>
-      </div> <!-- End Account Section -->
-
-    </div>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="login.js"></script>
   </body>
 </html>

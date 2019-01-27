@@ -106,17 +106,3 @@ body {
 .navbar-brand img {
   height: 4rem;
 }
-
-#behindNavBar {
-  height: 30px;
-}
-
-#home-header {
-  background-color: #FDEBD0;
-  color: #616A6B;
-}
-
-#home-pointer {
-  color: #FFFFFF;
-  font-weight: bold;
-}

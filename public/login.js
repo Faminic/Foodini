@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-  //Login Page stuff starts here
-
   $('#backLogin-button').click(function(e) {
     $("#login-form").delay(100).fadeIn(100);
     $("#register-form").fadeOut(100);
@@ -35,10 +33,8 @@ $(document).ready(function(){
       for (var i = 0; i < data.length; i++) {
         if (data[i].username == username && data[i].password == password) {
           found = true
-          $("#home-page").delay(100).fadeIn(2000);
-          $("#login-page").fadeOut(100);
-          //add a loading screen and more delay
-          $(document).attr("title", "Foodini - Good Food, Good Mood")
+          console.log("works")
+          //insert some way of switching websites
         }
       }
       if(found==false){
@@ -87,58 +83,7 @@ $(document).ready(function(){
           $("#usernameR").val("")
         }
       })
-
-
     }
   })
 
-  //Home Page stuff starts here
-
-  $('#home-pointer').click(function(e) {
-    $("#home").delay(100).fadeIn(100);
-    $("#storage").fadeOut(100);
-    $("#expiry").fadeOut(100);
-    $("#account").fadeOut(100);
-    $("#home-pointer").css("color", "#FFFFFF").css("font-weight", "Bold");
-    $("#storage-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-    $("#expiry-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-    $("#account-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-    e.preventDefault();
-   })
-
-   $('#storage-pointer').click(function(e) {
-     $("#storage").delay(100).fadeIn(100);
-     $("#home").fadeOut(100);
-     $("#expiry").fadeOut(100);
-     $("#account").fadeOut(100);
-     $("#storage-pointer").css("color", "#FFFFFF").css("font-weight", "Bold");
-     $("#home-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-     $("#expiry-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-     $("#account-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-     e.preventDefault();
-    })
-
-    $('#expiry-pointer').click(function(e) {
-      $("#expiry").delay(100).fadeIn(100);
-      $("#storage").fadeOut(100);
-      $("#home").fadeOut(100);
-      $("#account").fadeOut(100);
-      $("#expiry-pointer").css("color", "#FFFFFF").css("font-weight", "Bold");
-      $("#storage-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-      $("#home-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-      $("#account-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-      e.preventDefault();
-     })
-
-     $('#account-pointer').click(function(e) {
-       $("#account").delay(100).fadeIn(100);
-       $("#storage").fadeOut(100);
-       $("#expiry").fadeOut(100);
-       $("#home").fadeOut(100);
-       $("#account-pointer").css("color", "#FFFFFF").css("font-weight", "Bold");
-       $("#storage-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-       $("#expiry-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-       $("#home-pointer").css("color", "rgba(255,255,255,.5)").css("font-weight", "Normal");
-       e.preventDefault();
-      })
 })
