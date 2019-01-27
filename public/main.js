@@ -35,7 +35,7 @@ $(document).ready(function(){
       for (var i = 0; i < data.length; i++) {
         if (data[i].username == username && data[i].password == password) {
           found = true
-          $("#home-page").delay(100).fadeIn(100);
+          $("#home-page").delay(100).fadeIn(2000);
           $("#login-page").fadeOut(100);
           //add a loading screen and more delay
           $(document).attr("title", "Foodini - Good Food, Good Mood")
