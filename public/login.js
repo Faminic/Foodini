@@ -33,8 +33,12 @@ $(document).ready(function(){
       for (var i = 0; i < data.length; i++) {
         if (data[i].username == username && data[i].password == password) {
           found = true
-          console.log("works")
-          //insert some way of switching websites
+          $.post("/login", {username: username, password: password}, function(data){
+            if(data=="success") {
+              window.location.replace("/home")
+            }
+          })
+          break
         }
       }
       if(found==false){

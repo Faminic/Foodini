@@ -11,6 +11,8 @@ var path = require("path");
 
 var fs = require("fs"); //only need this when permanently storing users
 
+var session = require("express-session");
+app.use(session({secret: "foodini"}));
 
 /*var people = [{"username":"doctorwhocomposer", "forename":"Delia", "surname":"Derbyshire", "password":"iamsteven", "access_token":"concertina"}];
 var peopleJ = JSON.stringify(people);*/
@@ -18,10 +20,6 @@ var peopleJ = JSON.stringify(people);*/
 
 var people = JSON.parse(fs.readFileSync('allUsers.txt', 'utf8'))
 var peopleJ = JSON.stringify(people)
-
-app.get("/", function(req, res){
-  res.status(200).json(people)
-})
 
 app.get("/people", function(req,res){
   res.status(200).json(people)
@@ -66,12 +64,54 @@ app.post("/people", function(req,res){
 
 //own functions start here
 
+app.get("/", function(req, res){
+  if (req.session.username) {
+    res.redirect("/home")
+  }
+  else {
+    res.redirect("/signup")
+  }
+})
+
+app.get("/signup", function(req,res){
+  if (req.session.username) {
+    res.redirect("/home")
+  }
+  else{
+    res.sendFile(path.join(__dirname + "/public/login.html"))
+  }
+})
+
+app.get("/home", function(req,res){
+  if (req.session.username) {
+    res.sendFile(path.join(__dirname + "/public/home.html"))
+  }
+  else {
+    res.redirect("/signup")
+  }
+})
+
 app.get("/login/people", function(req,res){
   var info = []
   for(var i in people){
     info.push({username: people[i].username, password: people[i].password})
   }
   res.send(info)
+})
+
+app.post("/login", function(req,res){
+  req.session.username = req.body.username
+  req.session.password = req.body.password
+  res.end("success")
+})
+
+app.get("/logout", function(req,res){
+  req.session.destroy(function(err){
+    if (err) {
+      console.log(err)
+    }
+    res.redirect("/")
+  })
 })
 
 
