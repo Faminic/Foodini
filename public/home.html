@@ -132,8 +132,8 @@
                 <div class="modal-body">
                   <form id="account-form" action="localhost:8080/people" method="post" role="form" style="display: block;">
                     <div class="form-group">
-                      <input type="text" id="usernameR" class="form-control" placeholder="Username" required>
-                      <label for="usernameR">Username</label>
+                      <input type="text" id="username" class="form-control" placeholder="Username" required>
+                      <label for="username">Username</label>
                     </div>
                     <div class="form-group">
                       <input type="text" id="fname" class="form-control" placeholder="First Name" required>
@@ -144,15 +144,27 @@
                       <label for="sname">Last Name</label>
                     </div>
                     <div class="form-group">
-                      <input type="password" id="passwordR" class="form-control" placeholder="Password" required>
-                      <label for="passwordR">Password</label>
+                      <input type="password" id="password" class="form-control" placeholder="Password" required>
+                      <label for="password">Password</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" id="passwordC" class="form-control" placeholder="Confirm Password" required>
+                      <label for="passwordC">Confirm Password</label>
                     </div>
                     <button class="btn btn-lg btn-success btn-block" id="confirm" type="submit">Confirm Changes</button>
                     <div class="btn btn-lg btn-primary btn-block" id="username-alert" style="display: none;">
                       <span class="closebtn" id="closeable" onclick="this.parentElement.style.display='none'">&times;</span>
                       Username has already been taken
                     </div>
-                    <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
+                    <div class="btn btn-lg btn-primary btn-block" id="success-alert" style="display: none;">
+                      <span class="closebtn" id="closeable" onclick="this.parentElement.style.display='none'">&times;</span>
+                      Changes were made
+                    </div>
+                    <div class="btn btn-lg btn-primary btn-block" id="password-alert" style="display: none;">
+                      <span class="closebtn" id="closeable" onclick="this.parentElement.style.display='none'">&times;</span>
+                      Passwords do not match up
+                    </div>
+                    <button class="btn btn-lg btn-danger btn-block" id="close-button" data-dismiss="modal">Close</button>
                   </form>
                 </div>
               </div>

@@ -110,10 +110,54 @@ app.get("/logout", function(req,res){
     if (err) {
       console.log(err)
     }
-    res.redirect("/")
+    else {
+      res.redirect("/signup")
+    }
   })
 })
 
+app.get("/currentUser", function(req,res){
+  var user = req.session.username
+  var index = 0
+  for(var i in people){
+    if(user == people[i].username){
+      index = i
+    }
+  }
+  var info = {username: people[i].username, password: people[i].password, fname: people[i].forename, sname: people[i].surname}
+  res.send(info)
+})
+
+app.post("/updateUser", function(req,res){
+  var oldUsername = req.session.username
+
+  for(var i in people){
+    if(req.body.username == people[i].username){
+      res.end("no")
+    }
+  }
+
+  req.session.username = req.body.username
+  for(var i in people){
+    if(oldUsername == people[i].username){
+      var index = i
+    }
+  }
+  people[i].username = req.body.username
+  people[i].forename = req.body.fname
+  people[i].surname = req.body.sname
+  people[i].password = req.body.password
+
+  peopleJ = JSON.stringify(people)
+  fs.writeFile("allUsers.txt", peopleJ, function(err){
+    if (err) {
+      console.log(err)
+    }
+  })
+
+  res.end("success")
+
+})
 
 
 module.exports = app;
