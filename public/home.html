@@ -116,11 +116,47 @@
       <div class="container-fluid">
         <img src="images/accountbg.jpg" id="accountbg">
         <div class="row">
-          <div class="col-md-6 ml-auto">
-            <button class="button" type="button" name="button" data-toggle="modal" data-target="#editAccount">Edit Account</button>
+          <div class="col-lg-3 col-md-4 offset-lg-3 offset-md-2" >
+            <button class="button" id="account-button" data-toggle="modal" data-target="#editAccount" style="background-color:#58D68D;">Account</button>
           </div>
-          <div class="col-md-6 ml-auto">
-            <button class="button" type="button" name="button" data-toggle="modal" data-target="#logout">Logout</button>
+          <div class="col-lg-3 col-md-4">
+            <button class="button" id="logout-button" style="background-color:#F5B041;">Logout</button>
+          </div>
+          <div class="modal" id="editAccount">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Account Settings</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form id="account-form" action="localhost:8080/people" method="post" role="form" style="display: block;">
+                    <div class="form-group">
+                      <input type="text" id="usernameR" class="form-control" placeholder="Username" required>
+                      <label for="usernameR">Username</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" id="fname" class="form-control" placeholder="First Name" required>
+                      <label for="fname">First Name</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" id="sname" class="form-control" placeholder="Last Name" required>
+                      <label for="sname">Last Name</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" id="passwordR" class="form-control" placeholder="Password" required>
+                      <label for="passwordR">Password</label>
+                    </div>
+                    <button class="btn btn-lg btn-success btn-block" id="confirm" type="submit">Confirm Changes</button>
+                    <div class="btn btn-lg btn-primary btn-block" id="username-alert" style="display: none;">
+                      <span class="closebtn" id="closeable" onclick="this.parentElement.style.display='none'">&times;</span>
+                      Username has already been taken
+                    </div>
+                    <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
