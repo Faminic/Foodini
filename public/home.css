@@ -12,7 +12,8 @@
 
 #home-header {
   background-color: #FDEBD0;
-  color: #616A6B;
+  color: #000000;
+  font-family: 'Raleway', sans-serif;
 }
 
 #home-pointer {
@@ -29,7 +30,7 @@
 }
 
 #account {
-  margin-top: 120px;
+  margin-top: 42px;
 }
 
 #account .button {
@@ -43,6 +44,16 @@
   border-style: solid;
   font-size: 1.45em;
   font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+#account-text {
+  color: #000000;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .5em;
+  top: 25%;
+  width: 100%;
 }
 
 #editAccount {
