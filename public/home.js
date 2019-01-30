@@ -1,4 +1,60 @@
 $(document).ready(function(){
+
+  var itemCount = 0
+
+  $.get("/userItems", function(data){
+    var allItems = data
+    startHome(allItems)
+  })
+
+  function startHome(items) {
+    var allItems = items
+    itemCount = itemCount + 1
+    for (var i = 0; i < allItems.length; i++) {
+      var m = new Date(allItems[i].buy.toString());
+      var dateBuy =
+          ("0" + m.getUTCDate()).slice(-2) + "/" +
+          ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+          m.getUTCFullYear()
+      m = new Date(allItems[i].expiry.toString());
+      var dateExpiry =
+          ("0" + m.getUTCDate()).slice(-2) + "/" +
+          ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+          m.getUTCFullYear()
+      addItemCard("home-row",'div',"item" + itemCount, '<div class="card"> <div class="card-header">' + allItems[i].name + '</div> <div class="card-body"> <p>Quantity: ' + allItems[i].quantity + '</p> <p>Date Buy: ' + dateBuy + '</p> <p>Date Expired: ' + dateExpiry + '</p> <p>Storage: ' + allItems[i].storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + allItems[i].note + '</textarea> </div> </div>')
+    }
+  }
+
+  function addNewItemCard(item){
+    var addItem = item
+    itemCount = itemCount + 1
+    var m = new Date(addItem.buy.toString());
+    var dateBuy =
+        ("0" + m.getUTCDate()).slice(-2) + "/" +
+        ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+        m.getUTCFullYear()
+    m = new Date(addItem.expiry.toString());
+    var dateExpiry =
+        ("0" + m.getUTCDate()).slice(-2) + "/" +
+        ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+        m.getUTCFullYear()
+    addItemCard("home-row",'div',"item" + itemCount, '<div class="card"> <div class="card-header">' + addItem.name + '</div> <div class="card-body"> <p>Quantity: ' + addItem.quantity + '</p> <p>Date Buy: ' + dateBuy + '</p> <p>Date Expired: ' + dateExpiry + '</p> <p>Storage: ' + addItem.storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + addItem.note + '</textarea> </div> </div>')
+
+  }
+
+  //addElement("home-row",'div',"test", '<div class="card"> <div class="card-header"> Title1 </div> <div class="card-body"> <p>Quantity: 1</p> <p>Date Buy: 1</p> <p>Date Expired: 1</p> <p>Storage: 1</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly></textarea> </div> </div>')
+
+
+
+  function addItemCard(parentId, elementTag, elementId, html) {
+    var x = document.getElementById(parentId)
+    var newElement = document.createElement(elementTag)
+    newElement.setAttribute("id", elementId)
+    newElement.setAttribute("class", "col-lg-4 col-md-6 pb-5")
+    newElement.innerHTML = html
+    x.appendChild(newElement)
+  }
+
   $('#home-pointer').click(function(e) {
     $("#home").delay(100).fadeIn(100);
     $("#storage").fadeOut(100);
@@ -75,6 +131,7 @@ $(document).ready(function(){
       $.post("/addItem", {name: itemName, quantity: itemQuantity, storage: itemStorage, buy: itemBuy, expiry: itemExpiry, note: itemNote}, function(data) {
         if(data=="success") {
           $("#success-item-alert").delay(100).fadeIn(100)
+          addNewItemCard({name: itemName, quantity: itemQuantity, storage: itemStorage, buy: itemBuy, expiry: itemExpiry, note: itemNote})
         }
         else {
           $("#item-name-taken").delay(100).fadeIn(100)
@@ -83,14 +140,14 @@ $(document).ready(function(){
     })
 
     $("#add-item-button").click(function(){
-        $("#itemName").val("")
-        $("#itemQuantity").val("")
-        $("#itemStorage").val("")
-        $("#itemBuy").val("")
-        $("#itemExpiry").val("")
-        $("#itemNote").val("")
-        $("#success-item-alert").fadeOut(100);
-        $("#item-name-taken").fadeOut(100);
+      $("#itemName").val("")
+      $("#itemQuantity").val("")
+      $("#itemStorage").val("")
+      $("#itemBuy").val("")
+      $("#itemExpiry").val("")
+      $("#itemNote").val("")
+      $("#success-item-alert").fadeOut(100);
+      $("#item-name-taken").fadeOut(100);
     })
 
     $("#account-form").on("submit", function() {

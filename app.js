@@ -206,6 +206,16 @@ app.post("/addItem", function(req,res){
   res.end("success")
 })
 
+app.get("/userItems", function(req,res){
+  for(var i in userItems){
+    if(req.session.username == userItems[i].username){
+      var index = i
+    }
+  }
+  var items = userItems[index].items
+  res.send(items)
+})
+
 app.get("/test", function(req,res){
   var test = JSON.parse(fs.readFileSync('userItems.txt', 'utf8'))
 
