@@ -54,29 +54,72 @@
       <!--This will be a header/landing page for the homepage-->
       <div class="container-fluid">
         <div class="jumbotron" id="home-header">
-          <h1 class="display-7 text-center">Welcome to Foodini</h1>
-          <h4 class="text-center">Good Food = Good Mood</h4>
+          <h1 class="display-7 text-center">This is your homepage</h1>
           <div class="row pt-4">
-            <div class="col-md-4 text-center">
-              <h4>Food Inventory</h4>
+            <div class="col-md-6 offset-md-3 text-center">
               <p>Start tracking what food you have in the kitchen and make your life easier</p>
             </div>
-            <div class="col-md-4 text-center">
-              <h4>Storage</h4>
-              <p>Stop asking your housemate to borrow their storage space and know where everything is</p>
+          </div>
+          <div class="row">
+            <div class="col-md-4 offset-md-4" >
+              <button class="button" id="add-item-button" data-toggle="modal" data-target="#add-item-menu" style="background-color:#58D68D;">Add Items</button>
             </div>
-            <div class="col-md-4 text-center">
-              <h4>Expiration Dates</h4>
-              <p>Stop worrying about expiration dates or food waste and comfortably plan ahead</p>
+            <div class="modal" id="add-item-menu">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Add Item</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="addItem-form" action="localhost:8080/people" method="post" role="form" style="display: block;">
+                      <div class="form-group">
+                        <input type="text" id="itemName" class="form-control" placeholder="Item Name" required>
+                        <label for="itemName">Item Name</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="itemQuantity" class="form-control" placeholder="Quantity" required>
+                        <label for="itemQuantity">Quantity</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="itemStorage" class="form-control" placeholder="Storage Place" required>
+                        <label for="itemStorage">Storage Place</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="date" id="itemBuy" class="form-control" placeholder="Date Bought" required>
+                        <label for="itemBuy">Date Bought</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="date" id="itemExpiry" class="form-control" placeholder="Expiry Date" required>
+                        <label for="itemExpiry">Expiry Date</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="itemNote" class="form-control" placeholder="Additional Comments">
+                        <label for="itemNote">Additional Comments</label>
+                      </div>
+                      <button class="btn btn-lg btn-success btn-block" id="confirm-item" type="submit">Add Item</button>
+                      <div class="btn btn-lg btn-primary btn-block" id="success-item-alert" style="display: none;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                        Item was added
+                      </div>
+                      <div class="btn btn-lg btn-primary btn-block" id="item-name-taken" style="display: none;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                        You already added this item
+                      </div>
+                      <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
 
       <div class="container-fluid">
-        <h4 class="text-center pb-4">Food Inventory</h4>
-        <div class="jumbotron">
-
+        <h4 class="text-center pb-4">Items</h4>
+        <div class="jumbotron" id="home-items">
         </div>
       </div>
     </div> <!-- End Home Section -->
@@ -89,8 +132,23 @@
         </div>
       </div>
       <!--Start coding storage below with div tag-->
-      <div class="jumbotron">
-        <h1 class="text-center">THIS IS STORAGE</h1>
+      <!--This will be a header/landing page for the storage-->
+      <div class="container-fluid">
+        <div class="jumbotron" id="storage-header">
+          <h1 class="display-7 text-center">This is your storage section</h1>
+          <div class="row pt-4">
+            <div class="col-md-6 offset-md-3 text-center">
+              <p>Stop asking your housemate to borrow their storage space and know where everything is</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <h4 class="text-center pb-4">Items</h4>
+        <div class="jumbotron" id="storage-items">
+
+        </div>
       </div>
     </div> <!-- End Storage Section -->
 
@@ -101,8 +159,23 @@
         </div>
       </div>
       <!--Start coding expiry below with div tag-->
-      <div class="jumbotron">
-        <h1 class="text-center">THIS IS EXPIRY</h1>
+      <!--This will be a header/landing page for the expiry-->
+      <div class="container-fluid">
+        <div class="jumbotron" id="expiry-header">
+          <h1 class="display-7 text-center">This is your expiry section</h1>
+          <div class="row pt-4">
+            <div class="col-md-6 offset-md-3 text-center">
+              <p>Stop worrying about expiration dates or food waste and comfortably plan ahead</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <h4 class="text-center pb-4">Items</h4>
+        <div class="jumbotron" id="expiry-items">
+
+        </div>
       </div>
     </div> <!-- End Expiry Section -->
 
@@ -160,18 +233,18 @@
                     </div>
                     <button class="btn btn-lg btn-success btn-block" id="confirm" type="submit">Confirm Changes</button>
                     <div class="btn btn-lg btn-primary btn-block" id="username-alert" style="display: none;">
-                      <span class="closebtn" id="closeable" onclick="this.parentElement.style.display='none'">&times;</span>
+                      <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
                       Username has already been taken
                     </div>
                     <div class="btn btn-lg btn-primary btn-block" id="success-alert" style="display: none;">
-                      <span class="closebtn" id="closeable" onclick="this.parentElement.style.display='none'">&times;</span>
+                      <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
                       Changes were made
                     </div>
                     <div class="btn btn-lg btn-primary btn-block" id="password-alert" style="display: none;">
-                      <span class="closebtn" id="closeable" onclick="this.parentElement.style.display='none'">&times;</span>
+                      <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
                       Passwords do not match up
                     </div>
-                    <button class="btn btn-lg btn-danger btn-block" id="close-button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
                   </form>
                 </div>
               </div>

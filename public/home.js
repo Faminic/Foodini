@@ -63,6 +63,36 @@ $(document).ready(function(){
       $("#success-alert").fadeOut(100);
     })
 
+    $("#addItem-form").on("submit", function() {
+      $("#success-item-alert").fadeOut(100);
+      $("#item-name-taken").fadeOut(100);
+      var itemName = $("#itemName").val()
+      var itemQuantity = $("#itemQuantity").val()
+      var itemStorage = $("#itemStorage").val()
+      var itemBuy = $("#itemBuy").val()
+      var itemExpiry = $("#itemExpiry").val()
+      var itemNote = $("#itemNote").val()
+      $.post("/addItem", {name: itemName, quantity: itemQuantity, storage: itemStorage, buy: itemBuy, expiry: itemExpiry, note: itemNote}, function(data) {
+        if(data=="success") {
+          $("#success-item-alert").delay(100).fadeIn(100)
+        }
+        else {
+          $("#item-name-taken").delay(100).fadeIn(100)
+        }
+      })
+    })
+
+    $("#add-item-button").click(function(){
+        $("#itemName").val("")
+        $("#itemQuantity").val("")
+        $("#itemStorage").val("")
+        $("#itemBuy").val("")
+        $("#itemExpiry").val("")
+        $("#itemNote").val("")
+        $("#success-item-alert").fadeOut(100);
+        $("#item-name-taken").fadeOut(100);
+    })
+
     $("#account-form").on("submit", function() {
       $("#username-alert").fadeOut(100);
       $("#password-alert").fadeOut(100);

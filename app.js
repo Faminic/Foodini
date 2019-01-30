@@ -21,6 +21,9 @@ var peopleJ = JSON.stringify(people);*/
 var people = JSON.parse(fs.readFileSync('allUsers.txt', 'utf8'))
 var peopleJ = JSON.stringify(people)
 
+var userItems = JSON.parse(fs.readFileSync('userItems.txt', 'utf8'))
+var userItemsJ = JSON.stringify(userItems)
+
 app.get("/people", function(req,res){
   res.status(200).json(people)
 })
@@ -57,7 +60,17 @@ app.post("/people", function(req,res){
     if (err) {
       console.log(err)
     }
-  }) //only need this when permanently storing users
+  })
+
+  var items = []
+  userItems.push({username: ans.username, items: items})
+  var userItemsJ = JSON.stringify(userItems)
+
+  fs.writeFile("userItems.txt", userItemsJ, function(err){
+    if (err) {
+      console.log(err)
+    }
+  })
 
   res.send("The request was successful")
 })
@@ -130,10 +143,10 @@ app.get("/currentUser", function(req,res){
 
 app.post("/updateUser", function(req,res){
   var oldUsername = req.session.username
-
   for(var i in people){
     if(req.body.username == people[i].username){
       res.end("no")
+      return
     }
   }
 
@@ -147,6 +160,7 @@ app.post("/updateUser", function(req,res){
   people[i].forename = req.body.fname
   people[i].surname = req.body.sname
   people[i].password = req.body.password
+  userItems[i].username = req.body.username
 
   peopleJ = JSON.stringify(people)
   fs.writeFile("allUsers.txt", peopleJ, function(err){
@@ -155,8 +169,47 @@ app.post("/updateUser", function(req,res){
     }
   })
 
+  userItemsJ = JSON.stringify(userItems)
+  fs.writeFile("userItems.txt", userItemsJ, function(err){
+    if (err) {
+      console.log(err)
+    }
+  })
+
   res.end("success")
 
+})
+
+app.post("/addItem", function(req,res){
+  for(var i in userItems){
+    if(req.session.username == userItems[i].username){
+      var index = i
+    }
+  }
+
+  var itemName = req.body.name.toLowerCase()
+  var tempItems = userItems[index].items
+  for(var i in tempItems) {
+    if(itemName == tempItems[i].name.toLowerCase()){
+      res.end("no")
+      return
+    }
+  }
+
+  userItems[index].items.push(req.body)
+  userItemsJ = JSON.stringify(userItems)
+  fs.writeFile("userItems.txt", userItemsJ, function(err){
+    if (err) {
+      console.log(err)
+    }
+  })
+  res.end("success")
+})
+
+app.get("/test", function(req,res){
+  var test = JSON.parse(fs.readFileSync('userItems.txt', 'utf8'))
+
+  res.send(test)
 })
 
 

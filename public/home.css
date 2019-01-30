@@ -10,10 +10,18 @@
   height: 120px;
 }
 
-#home-header {
+#home-header, #storage-header, #expiry-header {
   background-color: #FDEBD0;
   color: #000000;
   font-family: 'Raleway', sans-serif;
+}
+
+#home-header h1, #storage-header h1, #expiry-header h1 {
+  font-size: 40px;
+}
+
+#home-header p, #storage-header p, #expiry-header p {
+  font-size: 25px;
 }
 
 #home-pointer {
@@ -33,7 +41,7 @@
   margin-top: 42px;
 }
 
-#account .button {
+#account .button, #add-item-button {
   text-transform: uppercase;
   display: block;
   margin-left: auto;
@@ -56,13 +64,13 @@
   width: 100%;
 }
 
-#editAccount {
+#editAccount, #add-item-menu{
   padding: 2rem;
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
 }
 
-#closeable {
+.closebtn {
   margin-left: 15px;
   color: white;
   font-weight: bold;
