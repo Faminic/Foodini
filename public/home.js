@@ -2,15 +2,75 @@ $(document).ready(function(){
 
   var itemCount = 0
 
+  var expiryOld = true
+  var buyOld = true
+
   $.get("/userItems", function(data){
     var allItems = data
     startHome(allItems)
+    startExpiry("expiry","old", allItems)
   })
 
-  function startHome(items) {
+  $("#sort-by-buy").click(function(){
+    removeAllCards("expiry")
+    if(buyOld) {
+      $.get("/userItems", function(data){
+        var allItems = data
+        startExpiry("buy","recent", allItems)
+      })
+      buyOld = false
+    }
+    else {
+      $.get("/userItems", function(data){
+        var allItems = data
+        startExpiry("buy","old", allItems)
+      })
+      buyOld = true
+    }
+  })
+
+  $("#sort-by-expiry").click(function(){
+    removeAllCards("expiry")
+    if(expiryOld) {
+      $.get("/userItems", function(data){
+        var allItems = data
+        startExpiry("expiry","recent", allItems)
+      })
+      expiryOld = false
+    }
+    else {
+      $.get("/userItems", function(data){
+        var allItems = data
+        startExpiry("expiry","old", allItems)
+      })
+      expiryOld = true
+    }
+  })
+
+  function startExpiry(option1, option2, items) {  //insert buy or expiry for option1, recent or old for option2,
     var allItems = items
-    itemCount = itemCount + 1
+    itemCount = 0
+    if (option1 == "expiry") {
+      allItems.sort(function(a, b) {
+          a = new Date(a.expiry);
+          b = new Date(b.expiry);
+          return a>b ? -1 : a<b ? 1 : 0;
+      });
+    }
+    else {
+      allItems.sort(function(a, b) {
+          a = new Date(a.buy);
+          b = new Date(b.buy);
+          return a>b ? -1 : a<b ? 1 : 0;
+      });
+    }
+
+    if(option2 == "old"){
+      allItems.reverse()
+    }
+
     for (var i = 0; i < allItems.length; i++) {
+      itemCount = itemCount + 1
       var m = new Date(allItems[i].buy.toString());
       var dateBuy =
           ("0" + m.getUTCDate()).slice(-2) + "/" +
@@ -21,7 +81,47 @@ $(document).ready(function(){
           ("0" + m.getUTCDate()).slice(-2) + "/" +
           ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
           m.getUTCFullYear()
-      addItemCard("home-row",'div',"item" + itemCount, '<div class="card"> <div class="card-header">' + allItems[i].name + '</div> <div class="card-body"> <p>Quantity: ' + allItems[i].quantity + '</p> <p>Date Buy: ' + dateBuy + '</p> <p>Date Expired: ' + dateExpiry + '</p> <p>Storage: ' + allItems[i].storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + allItems[i].note + '</textarea> </div> </div>')
+      addItemCard("expiry-row",'div',"itemExpiry" + itemCount, '<div class="card"> <div class="card-header">' + allItems[i].name + '</div> <div class="card-body"> <p>Quantity: ' + allItems[i].quantity + '</p> <p>Date Bought: ' + dateBuy + '</p> <p>Expiry Date: ' + dateExpiry + '</p> <p>Storage: ' + allItems[i].storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + allItems[i].note + '</textarea> </div> </div>')
+    }
+  }
+
+  function startHome(items) {
+    var allItems = items
+    for (var i = 0; i < allItems.length; i++) {
+      itemCount = itemCount + 1
+      var m = new Date(allItems[i].buy.toString());
+      var dateBuy =
+          ("0" + m.getUTCDate()).slice(-2) + "/" +
+          ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+          m.getUTCFullYear()
+      m = new Date(allItems[i].expiry.toString());
+      var dateExpiry =
+          ("0" + m.getUTCDate()).slice(-2) + "/" +
+          ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
+          m.getUTCFullYear()
+      addItemCard("home-row",'div',"itemHome" + itemCount, '<div class="card"> <div class="card-header">' + allItems[i].name + '</div> <div class="card-body"> <p>Quantity: ' + allItems[i].quantity + '</p> <p>Date Bought: ' + dateBuy + '</p> <p>Expiry Date: ' + dateExpiry + '</p> <p>Storage: ' + allItems[i].storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + allItems[i].note + '</textarea> </div> </div>')
+    }
+  }
+
+  function removeAllCards(page) { //insert home,storage or expiry
+    var element
+    if(page == "home") {
+      for (var i = 0; i < itemCount; i++) {
+        element = document.getElementById("itemHome"+(i+1))
+        element.parentNode.removeChild(element)
+      }
+    }
+    else if (page == "storage") {
+      for (var i = 0; i < itemCount; i++) {
+        element = document.getElementById("itemStorage"+(i+1))
+        element.parentNode.removeChild(element)
+      }
+    }
+    else {
+      for (var i = 0; i < itemCount; i++) {
+        element = document.getElementById("itemExpiry"+(i+1))
+        element.parentNode.removeChild(element)
+      }
     }
   }
 
@@ -38,12 +138,11 @@ $(document).ready(function(){
         ("0" + m.getUTCDate()).slice(-2) + "/" +
         ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
         m.getUTCFullYear()
-    addItemCard("home-row",'div',"item" + itemCount, '<div class="card"> <div class="card-header">' + addItem.name + '</div> <div class="card-body"> <p>Quantity: ' + addItem.quantity + '</p> <p>Date Buy: ' + dateBuy + '</p> <p>Date Expired: ' + dateExpiry + '</p> <p>Storage: ' + addItem.storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + addItem.note + '</textarea> </div> </div>')
+    addItemCard("home-row",'div',"itemHome" + itemCount, '<div class="card"> <div class="card-header">' + addItem.name + '</div> <div class="card-body"> <p>Quantity: ' + addItem.quantity + '</p> <p>Date Bought: ' + dateBuy + '</p> <p>Expiry Date: ' + dateExpiry + '</p> <p>Storage: ' + addItem.storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + addItem.note + '</textarea> </div> </div>')
 
   }
 
   //addElement("home-row",'div',"test", '<div class="card"> <div class="card-header"> Title1 </div> <div class="card-body"> <p>Quantity: 1</p> <p>Date Buy: 1</p> <p>Date Expired: 1</p> <p>Storage: 1</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly></textarea> </div> </div>')
-
 
 
   function addItemCard(parentId, elementTag, elementId, html) {
@@ -118,6 +217,8 @@ $(document).ready(function(){
       $("#password-alert").fadeOut(100);
       $("#success-alert").fadeOut(100);
     })
+
+
 
     $("#addItem-form").on("submit", function() {
       $("#success-item-alert").fadeOut(100);

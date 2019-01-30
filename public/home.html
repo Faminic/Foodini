@@ -112,7 +112,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -168,6 +167,15 @@
           <div class="row pt-4">
             <div class="col-md-6 offset-md-3 text-center">
               <p>Stop worrying about expiration dates or food waste and comfortably plan ahead</p>
+              <p style="font-size: 18px;"> Press a button below to sort by date item was bought or date item will expire. Press the button again to have it be the newest date first or the oldest date first.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 offset-md-2">
+              <button class="button" id="sort-by-buy" style="background-color:#58D68D;">Sort by date bought</button>
+            </div>
+            <div class="col-md-4">
+              <button class="button" id="sort-by-expiry" style="background-color:#58D68D;">Sort by expiry date</button>
             </div>
           </div>
         </div>
@@ -176,7 +184,8 @@
       <div class="container-fluid">
         <h4 class="text-center pb-4">Items</h4>
         <div class="jumbotron" id="expiry-items">
-
+          <div class="row" id="expiry-row">
+          </div>
         </div>
       </div>
     </div> <!-- End Expiry Section -->

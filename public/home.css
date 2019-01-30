@@ -29,6 +29,10 @@
   font-weight: bold;
 }
 
+#home-items .card-header {
+  text-align: center;
+}
+
 #accountbg {
   width: 100%;
   height: 100%;
@@ -51,6 +55,19 @@
   padding: 20px 60px;
   border-style: solid;
   font-size: 1.45em;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+#sort-by-buy, #sort-by-expiry {
+  text-transform: uppercase;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border-radius: 100px;
+  padding: 20px 60px;
+  border-style: solid;
+  font-size: 1em;
   font-family: 'Montserrat', Helvetica, sans-serif;
 }
 
