@@ -285,7 +285,7 @@ app.post("/chosenItem", function(req,res){
   res.send(wantedItem)
 })
 
-app.get("/test", function(req,res){
+app.get("/allItems", function(req,res){
   var test = JSON.parse(fs.readFileSync('userItems.txt', 'utf8'))
 
   res.send(test)

@@ -246,6 +246,7 @@ $(document).ready(function(){
     $("#delete-form").on("submit", function(e) {
       $("#deleteAlert").fadeOut(100);
       $("#deleteAlert2").fadeOut(100);
+      $("#deleteButton2").fadeOut(100);
       var itemNumber = $("#deleteNumber").val()
       if (itemNumber > 0 && itemNumber <= itemCount) {
         $("#deleteAlert").fadeOut(100);
@@ -298,7 +299,7 @@ $(document).ready(function(){
         $("#itemChooseAlert").delay(100).fadeIn(100);
         $("#itemChooseEdit").val("")
       }
-      e.preventDefault(e);
+      e.preventDefault(e)
     })
 
     $("#edit-item-form").on("submit", function(e) {
@@ -335,12 +336,13 @@ $(document).ready(function(){
           $("#itemNameEdit").val("")
         }
       })
+      e.preventDefault(e)
     })
 
 
 
 
-    $("#addItem-form").on("submit", function() {
+    $("#addItem-form").on("submit", function(e) {
       $("#success-item-alert").fadeOut(100);
       $("#item-name-taken").fadeOut(100);
       var itemName = $("#itemName").val()
@@ -359,6 +361,7 @@ $(document).ready(function(){
           $("#itemName").val("")
         }
       })
+      e.preventDefault(e)
     })
 
     $("#add-item-button").click(function(){
@@ -372,7 +375,7 @@ $(document).ready(function(){
       $("#item-name-taken").fadeOut(100);
     })
 
-    $("#account-form").on("submit", function() {
+    $("#account-form").on("submit", function(e) {
       $("#username-alert").fadeOut(100);
       $("#password-alert").fadeOut(100);
       $("#success-alert").fadeOut(100);
@@ -397,6 +400,7 @@ $(document).ready(function(){
           }
         })
       }
+      e.preventDefault(e)
     })
 
     $("#logout-button").click(function(){

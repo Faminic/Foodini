@@ -1,1 +1,1 @@
-[{"username":"doctorwhocomposer","items":[{"name":"Bread","quantity":"1","storage":"Shelf","buy":"2019-01-01","expiry":"2019-01-31","note":""},{"name":"Grapes","quantity":"4","storage":"Fridge","buy":"2019-01-31","expiry":"2019-01-31","note":"Yum"}]}]
+[{"username":"doctorwhocomposer","items":[]}]
