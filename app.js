@@ -142,14 +142,15 @@ app.get("/currentUser", function(req,res){
 })
 
 app.post("/updateUser", function(req,res){
-  var oldUsername = req.session.username
-  for(var i in people){
-    if(req.body.username == people[i].username){
-      res.end("no")
-      return
+  if(req.body.username != req.session.username){
+    for(var i in people){
+      if(req.body.username == people[i].username){
+        res.end("no")
+        return
+      }
     }
   }
-
+  var oldUsername = req.session.username
   req.session.username = req.body.username
   for(var i in people){
     if(oldUsername == people[i].username){
