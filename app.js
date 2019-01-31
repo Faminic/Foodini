@@ -207,6 +207,41 @@ app.post("/addItem", function(req,res){
   res.end("success")
 })
 
+app.post("/updateItem", function(req,res){
+  for(var i in userItems){
+    if(req.session.username == userItems[i].username){
+      var index = i
+    }
+  }
+
+  var itemName = req.body.name.toLowerCase()
+  var tempItems = userItems[index].items
+  for(var i in tempItems) {
+    if(itemName == tempItems[i].name.toLowerCase()){
+      res.end("no")
+      return
+    }
+  }
+
+  var itemIndex = req.body.itemNumber - 1
+
+  userItems[index].items[itemIndex].name = req.body.name
+  userItems[index].items[itemIndex].quantity = req.body.quantity
+  userItems[index].items[itemIndex].storage = req.body.storage
+  userItems[index].items[itemIndex].buy = req.body.buy
+  userItems[index].items[itemIndex].expiry = req.body.expiry
+  userItems[index].items[itemIndex].note = req.body.note
+  userItemsJ = JSON.stringify(userItems)
+  fs.writeFile("userItems.txt", userItemsJ, function(err){
+    if (err) {
+      console.log(err)
+    }
+  })
+  res.end("success")
+
+})
+
+
 app.get("/userItems", function(req,res){
   for(var i in userItems){
     if(req.session.username == userItems[i].username){
@@ -215,6 +250,16 @@ app.get("/userItems", function(req,res){
   }
   var items = userItems[index].items
   res.send(items)
+})
+
+app.post("/chosenItem", function(req,res){
+  for(var i in userItems){
+    if(req.session.username == userItems[i].username){
+      var index = i
+    }
+  }
+  var wantedItem = userItems[index].items[req.body.itemNumber - 1]
+  res.send(wantedItem)
 })
 
 app.get("/test", function(req,res){

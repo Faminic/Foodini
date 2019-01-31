@@ -31,9 +31,6 @@
               <a class="nav-link" href="#home" id="home-pointer">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#storage" id="storage-pointer">Storage</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#expiry" id="expiry-pointer">Expiry</a>
             </li>
             <li class="nav-item">
@@ -58,11 +55,18 @@
           <div class="row pt-4">
             <div class="col-md-6 offset-md-3 text-center">
               <p>Start tracking what food you have in the kitchen and make your life easier</p>
+              <p style="font-size: 18px;"> Press the left button to add a new item to your collection. For the other two buttons, you will have to know the respective number of the item you want to change, which you will find to the left of the item name.</p>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4 offset-md-4" >
-              <button class="button" id="add-item-button" data-toggle="modal" data-target="#add-item-menu" style="background-color:#58D68D;">Add Items</button>
+            <div class="col-md-4" >
+              <button class="button" id="add-item-button" data-toggle="modal" data-target="#add-item-menu" style="background-color:#58D68D;">Add Item</button>
+            </div>
+            <div class="col-md-4">
+              <button class="button" id="edit-item-button" data-toggle="modal" data-target="#edit-item-menu" style="background-color:#58D68D;">Edit Item</button>
+            </div>
+            <div class="col-md-4">
+              <button class="button" id="delete-item-button" style="background-color:#58D68D;">Delete Item</button>
             </div>
             <div class="modal" id="add-item-menu">
               <div class="modal-dialog">
@@ -112,6 +116,66 @@
                 </div>
               </div>
             </div>
+            <div class="modal" id="edit-item-menu">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Edit Item</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="pre-edit-form" style="display: block;">
+                      <div class="form-group">
+                        <input type="text" id="itemChooseEdit" class="form-control" placeholder="Item Number" required>
+                        <label for="itemChooseEdit">Item Number</label>
+                      </div>
+                      <button class="btn btn-lg btn-success btn-block" id="itemChooseButton1" type="submit">Next</button>
+                      <div class="btn btn-lg btn-primary btn-block" id="itemChooseAlert" style="display: none;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                        Item number is invalid
+                      </div>
+                      <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
+                    </form>
+                    <form id="edit-item-form" action="localhost:8080/people" method="post" role="form" style="display: none;">
+                      <div class="form-group">
+                        <input type="text" id="itemNameEdit" class="form-control" placeholder="Item Name" required>
+                        <label for="itemNameEdit">Item Name</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="itemQuantityEdit" class="form-control" placeholder="Quantity" required>
+                        <label for="itemQuantityEdit">Quantity</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="itemStorageEdit" class="form-control" placeholder="Storage Place" required>
+                        <label for="itemStorageEdit">Storage Place</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="date" id="itemBuyEdit" class="form-control" placeholder="Date Bought" required>
+                        <label for="itemBuyEdit">Date Bought</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="date" id="itemExpiryEdit" class="form-control" placeholder="Expiry Date" required>
+                        <label for="itemExpiryEdit">Expiry Date</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="itemNoteEdit" class="form-control" placeholder="Additional Comments">
+                        <label for="itemNoteEdit">Additional Comments</label>
+                      </div>
+                      <button class="btn btn-lg btn-success btn-block" id="confirm-item-edit" type="submit">Confirm Changes</button>
+                      <div class="btn btn-lg btn-primary btn-block" id="success-item-edit" style="display: none;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                        Changes were made
+                      </div>
+                      <div class="btn btn-lg btn-primary btn-block" id="item-name-edit" style="display: none;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                        This item already exists
+                      </div>
+                      <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -124,34 +188,6 @@
         </div>
       </div>
     </div> <!-- End Home Section -->
-
-
-    <div id="storage" style="display: none;">    <!-- Start Storage Section -->
-      <!--This just hides behind navbar for website formatting-->
-      <div class="container-fluid">
-        <div class="row" id="behindNavBar">
-        </div>
-      </div>
-      <!--Start coding storage below with div tag-->
-      <!--This will be a header/landing page for the storage-->
-      <div class="container-fluid">
-        <div class="jumbotron" id="storage-header">
-          <h1 class="display-7 text-center">This is your storage section</h1>
-          <div class="row pt-4">
-            <div class="col-md-6 offset-md-3 text-center">
-              <p>Stop asking your housemate to borrow their storage space and know where everything is</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container-fluid">
-        <h4 class="text-center pb-4">Items</h4>
-        <div class="jumbotron" id="storage-items">
-
-        </div>
-      </div>
-    </div> <!-- End Storage Section -->
 
     <div id="expiry" style="display: none;">    <!-- Start Expiry Section -->
       <!--This just hides behind navbar for website formatting-->
@@ -167,8 +203,7 @@
           <div class="row pt-4">
             <div class="col-md-6 offset-md-3 text-center">
               <p>Stop worrying about expiration dates or food waste and comfortably plan ahead</p>
-              <p style="font-size: 18px;"> Press a button below to sort by date item was bought or date item will expire. Press the button again to have it be the newest date first or the oldest date first.</p>
-              <p style="font-size: 18px;"> If your item has a red border around it, then it has expired!</p>
+              <p style="font-size: 18px;"> Press a button below to sort by date item was bought or date item will expire. Press the button again to have it be the newest date first or the oldest date first. If your item has a red border around it, then it has expired!</p>
             </div>
           </div>
           <div class="row">

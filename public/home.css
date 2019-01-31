@@ -29,7 +29,7 @@
   font-weight: bold;
 }
 
-#home-items .card-header {
+#home-items .card-header, #expiry-items .card-header{
   text-align: center;
 }
 
@@ -45,7 +45,7 @@
   margin-top: 42px;
 }
 
-#account .button, #add-item-button {
+#account .button, #add-item-button, #edit-item-button, #delete-item-button {
   text-transform: uppercase;
   display: block;
   margin-left: auto;
@@ -54,7 +54,7 @@
   border-radius: 100px;
   padding: 20px 60px;
   border-style: solid;
-  font-size: 1.45em;
+  font-size: 1.25em;
   font-family: 'Montserrat', Helvetica, sans-serif;
 }
 
@@ -81,7 +81,7 @@
   width: 100%;
 }
 
-#editAccount, #add-item-menu{
+#editAccount, #add-item-menu, #edit-item-menu{
   padding: 2rem;
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
