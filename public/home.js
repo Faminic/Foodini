@@ -104,7 +104,7 @@ $(document).ready(function(){
           ("0" + m.getUTCDate()).slice(-2) + "/" +
           ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
           m.getUTCFullYear()
-      addItemCard("home-row",'div',"itemHome" + itemCount, '<div class="card" id="itemHomeCard'+ itemCount +'"> <div class="card-header" id="itemHomeHeader'+ itemCount +'">' +itemCount + "- " + allItems[i].name + '</div> <div class="card-body"> <p>Quantity: ' + allItems[i].quantity + '</p> <p>Date Bought: ' + dateBuy + '</p> <p>Expiry Date: ' + dateExpiry + '</p> <p>Storage: ' + allItems[i].storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + allItems[i].note + '</textarea> </div> </div>')
+      addItemCard("home-row",'div',"itemHome" + itemCount, '<div class="card" id="itemHomeCard'+ itemCount +'"> <div class="card-header" id="itemHomeHeader'+ itemCount +'">' +itemCount + " - " + allItems[i].name + '</div> <div class="card-body"> <p>Quantity: ' + allItems[i].quantity + '</p> <p>Date Bought: ' + dateBuy + '</p> <p>Expiry Date: ' + dateExpiry + '</p> <p>Storage: ' + allItems[i].storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + allItems[i].note + '</textarea> </div> </div>')
     }
       //console.log($('#itemHomeHeader' + num).text().slice(num.toString().length+2))
   }
@@ -138,7 +138,7 @@ $(document).ready(function(){
         ("0" + m.getUTCDate()).slice(-2) + "/" +
         ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
         m.getUTCFullYear()
-    addItemCard("home-row",'div',"itemHome" + itemCount, '<div class="card" id="itemHomeCard'+ itemCount +'"> <div class="card-header" id="itemHomeHeader'+ itemCount +'">' +itemCount + "- " + addItem.name + '</div> <div class="card-body"> <p>Quantity: ' + addItem.quantity + '</p> <p>Date Bought: ' + dateBuy + '</p> <p>Expiry Date: ' + dateExpiry + '</p> <p>Storage: ' + addItem.storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + addItem.note + '</textarea> </div> </div>')
+    addItemCard("home-row",'div',"itemHome" + itemCount, '<div class="card" id="itemHomeCard'+ itemCount +'"> <div class="card-header" id="itemHomeHeader'+ itemCount +'">' +itemCount + " - " + addItem.name + '</div> <div class="card-body"> <p>Quantity: ' + addItem.quantity + '</p> <p>Date Bought: ' + dateBuy + '</p> <p>Expiry Date: ' + dateExpiry + '</p> <p>Storage: ' + addItem.storage + '</p> <p>Additional Comments:</p> <textarea class="comment box" rows="4" cols="20" readonly>' + addItem.note + '</textarea> </div> </div>')
 
     for (var i = 0; i < itemCount-1; i++) {
       element = document.getElementById("itemExpiry"+(i+1))
