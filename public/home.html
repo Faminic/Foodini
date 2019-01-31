@@ -44,7 +44,7 @@
     <div id="home">
       <!--This just hides behind navbar for website formatting-->
       <div class="container-fluid">
-        <div class="row" id="behindNavBar">
+        <div class="row" id="behindNavBar1">
         </div>
       </div>
       <!--Start coding homepage below with div tag-->
@@ -76,7 +76,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                   </div>
                   <div class="modal-body">
-                    <form id="addItem-form" role="form" style="display: block;">
+                    <form id="addItem-form" style="display: block;">
                       <div class="form-group">
                         <input type="text" id="itemName" class="form-control" placeholder="Item Name" required>
                         <label for="itemName">Item Name</label>
@@ -90,11 +90,11 @@
                         <label for="itemStorage">Storage Place</label>
                       </div>
                       <div class="form-group">
-                        <input type="date" id="itemBuy" class="form-control" placeholder="Date Bought" required>
+                        <input type="date" id="itemBuy" class="form-control" required>
                         <label for="itemBuy">Date Bought</label>
                       </div>
                       <div class="form-group">
-                        <input type="date" id="itemExpiry" class="form-control" placeholder="Expiry Date" required>
+                        <input type="date" id="itemExpiry" class="form-control" required>
                         <label for="itemExpiry">Expiry Date</label>
                       </div>
                       <div class="form-group">
@@ -136,7 +136,7 @@
                       </div>
                       <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
                     </form>
-                    <form id="edit-item-form" role="form" style="display: none;">
+                    <form id="edit-item-form" style="display: none;">
                       <div class="form-group">
                         <input type="text" id="itemNameEdit" class="form-control" placeholder="Item Name" required>
                         <label for="itemNameEdit">Item Name</label>
@@ -150,11 +150,11 @@
                         <label for="itemStorageEdit">Storage Place</label>
                       </div>
                       <div class="form-group">
-                        <input type="date" id="itemBuyEdit" class="form-control" placeholder="Date Bought" required>
+                        <input type="date" id="itemBuyEdit" class="form-control" required>
                         <label for="itemBuyEdit">Date Bought</label>
                       </div>
                       <div class="form-group">
-                        <input type="date" id="itemExpiryEdit" class="form-control" placeholder="Expiry Date" required>
+                        <input type="date" id="itemExpiryEdit" class="form-control" required>
                         <label for="itemExpiryEdit">Expiry Date</label>
                       </div>
                       <div class="form-group">
@@ -221,7 +221,7 @@
     <div id="expiry" style="display: none;">    <!-- Start Expiry Section -->
       <!--This just hides behind navbar for website formatting-->
       <div class="container-fluid">
-        <div class="row" id="behindNavBar">
+        <div class="row" id="behindNavBar2">
         </div>
       </div>
       <!--Start coding expiry below with div tag-->
@@ -258,12 +258,12 @@
     <div id="account" style="display: none;">    <!-- Start Account Section -->
       <!--This just hides behind navbar for website formatting-->
       <div class="container-fluid">
-        <div class="row" id="behindNavBar">
+        <div class="row" id="behindNavBar3">
         </div>
       </div>
       <!--Start coding account below with div tag-->
       <div class="container-fluid">
-        <img src="images/accountbg.jpg" id="accountbg">
+        <img src="images/accountbg.jpg" id="accountbg" alt="no-image-sad">
         <div class="row">
           <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2" id="account-text">
             <h4>This is your personal account page.</h4>
@@ -286,7 +286,7 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <form id="account-form" role="form" style="display: block;">
+                  <form id="account-form" style="display: block;">
                     <div class="form-group">
                       <input type="text" id="username" class="form-control" placeholder="Username" required>
                       <label for="username">Username</label>
@@ -330,6 +330,6 @@
       </div>
     </div> <!-- End Account Section -->
 
-    <script type="text/javascript" src="home.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>

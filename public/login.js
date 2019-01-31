@@ -23,7 +23,7 @@ $(document).ready(function(){
     e.preventDefault();
   })
 
-  $("#login-form").on("submit", function() { //need to add sessions as well
+  $("#login-form").on("submit", function(e) { //need to add sessions as well
     $("#login-alert").fadeOut(100);
     $("#register-success").fadeOut(100);
     var username = $("#username").val()
@@ -47,9 +47,10 @@ $(document).ready(function(){
         $("#login-alert").delay(100).fadeIn(100);
       }
     })
+    e.preventDefault(e)
   })
 
-  $("#register-form").on("submit", function() {
+  $("#register-form").on("submit", function(e) {
     $("#register-alert-username").fadeOut(100);
     $("#register-alert-password").fadeOut(100);
     var usernameR = $("#usernameR").val()
@@ -88,6 +89,7 @@ $(document).ready(function(){
         }
       })
     }
+    e.preventDefault(e)
   })
 
 })

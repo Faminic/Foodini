@@ -47,7 +47,7 @@ body {
   transition: all 0.2s;
 }
 
-#login-alert-close, #register-alert-close {
+#login-alert-close, #register-alert-close, #login-alert-success, #register-alert-close2{
   margin-left: 15px;
   color: white;
   font-weight: bold;
