@@ -66,7 +66,7 @@
               <button class="button" id="edit-item-button" data-toggle="modal" data-target="#edit-item-menu" style="background-color:#58D68D;">Edit Item</button>
             </div>
             <div class="col-md-4">
-              <button class="button" id="delete-item-button" style="background-color:#58D68D;">Delete Item</button>
+              <button class="button" id="delete-item-button" data-toggle="modal" data-target="#delete-item-menu" style="background-color:#58D68D;">Delete Item</button>
             </div>
             <div class="modal" id="add-item-menu">
               <div class="modal-dialog">
@@ -169,6 +169,35 @@
                       <div class="btn btn-lg btn-primary btn-block" id="item-name-edit" style="display: none;">
                         <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
                         This item already exists
+                      </div>
+                      <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal" id="delete-item-menu">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Delete Item</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="delete-form" style="display: block;">
+                      <div class="form-group">
+                        <input type="text" id="deleteNumber" class="form-control" placeholder="Item Number" required>
+                        <label for="deleteNumber">Item Number</label>
+                      </div>
+                      <button class="btn btn-lg btn-success btn-block" id="deleteButton1">Delete Item</button>
+                      <button class="btn btn-lg btn-success btn-block" id="deleteButton2" type="submit" style="display: none;">Press To Confirm</button>
+                      <div class="btn btn-lg btn-primary btn-block" id="deleteAlert" style="display: none;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                        Item number is invalid
+                      </div>
+                      <div class="btn btn-lg btn-primary btn-block" id="deleteAlert2" style="display: none;">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                        Deletion was successful
                       </div>
                       <button class="btn btn-lg btn-danger btn-block" data-dismiss="modal">Close</button>
                     </form>

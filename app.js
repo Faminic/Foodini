@@ -231,6 +231,7 @@ app.post("/updateItem", function(req,res){
   userItems[index].items[itemIndex].buy = req.body.buy
   userItems[index].items[itemIndex].expiry = req.body.expiry
   userItems[index].items[itemIndex].note = req.body.note
+
   userItemsJ = JSON.stringify(userItems)
   fs.writeFile("userItems.txt", userItemsJ, function(err){
     if (err) {
@@ -238,6 +239,28 @@ app.post("/updateItem", function(req,res){
     }
   })
   res.end("success")
+
+})
+
+app.post("/deleteItem", function(req,res){
+  for(var i in userItems){
+    if(req.session.username == userItems[i].username){
+      var index = i
+    }
+  }
+
+  var itemIndex = req.body.itemNumber - 1
+  var deletion = userItems[index].items.splice(itemIndex,1)
+
+  userItemsJ = JSON.stringify(userItems)
+  fs.writeFile("userItems.txt", userItemsJ, function(err){
+    if (err) {
+      console.log(err)
+    }
+  })
+
+  res.send("success")
+
 
 })
 

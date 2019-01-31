@@ -81,7 +81,7 @@
   width: 100%;
 }
 
-#editAccount, #add-item-menu, #edit-item-menu{
+#editAccount, #add-item-menu, #edit-item-menu, #delete-item-menu{
   padding: 2rem;
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;

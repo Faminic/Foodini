@@ -222,6 +222,62 @@ $(document).ready(function(){
       $("#itemChooseAlert").fadeOut(100);
     })
 
+    $("#delete-item-button").click(function(){
+      $("#deleteButton2").fadeOut(100);
+      $("#deleteAlert").fadeOut(100);
+      $("#deleteAlert2").fadeOut(100);
+      $("#deleteNumber").val("")
+    })
+
+    $("#deleteButton1").click(function(e){
+      $("#deleteAlert").fadeOut(100);
+      $("#deleteAlert2").fadeOut(100);
+      var itemNumber = $("#deleteNumber").val()
+      if (itemNumber > 0 && itemNumber <= itemCount) {
+        $("#deleteButton2").delay(100).fadeIn(100);
+      }
+      else{
+        $("#deleteAlert").delay(100).fadeIn(100);
+        $("#deleteNumber").val("")
+      }
+      e.preventDefault(e);
+    })
+
+    $("#delete-form").on("submit", function(e) {
+      $("#deleteAlert").fadeOut(100);
+      $("#deleteAlert2").fadeOut(100);
+      var itemNumber = $("#deleteNumber").val()
+      if (itemNumber > 0 && itemNumber <= itemCount) {
+        $("#deleteAlert").fadeOut(100);
+        $("#deleteAlert2").fadeOut(100);
+        $.post("/deleteItem", {itemNumber: itemNumber}, function(data) {
+          if(data=="success"){
+            $("#deleteAlert2").delay(100).fadeIn(100);
+            for (var i = 0; i < itemCount; i++) {
+              element = document.getElementById("itemExpiry"+(i+1))
+              element.parentNode.removeChild(element)
+              element = document.getElementById("itemHome"+(i+1))
+              element.parentNode.removeChild(element)
+            }
+            itemCount = 0
+            expiryOld = true
+            buyOld = true
+
+            $.get("/userItems", function(data){
+              var allItems = data
+              startHome(allItems)
+              startExpiry("expiry","old", allItems)
+            })
+          }
+        })
+      }
+      else {
+        $("#deleteAlert").delay(100).fadeIn(100);
+        $("#deleteNumber").val("")
+      }
+      e.preventDefault(e);
+    })
+
     $("#pre-edit-form").on("submit", function(e) {
       $("#itemChooseAlert").fadeOut(100);
       var itemNumber = $("#itemChooseEdit").val()
