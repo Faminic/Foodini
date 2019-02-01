@@ -214,16 +214,17 @@ app.post("/updateItem", function(req,res){
     }
   }
 
-  var itemName = req.body.name.toLowerCase()
-  var tempItems = userItems[index].items
-  for(var i in tempItems) {
-    if(itemName == tempItems[i].name.toLowerCase()){
-      res.end("no")
-      return
+  var itemIndex = req.body.itemNumber - 1
+  if (req.body.name!=userItems[index].items[itemIndex].name) {
+    var itemName = req.body.name.toLowerCase()
+    var tempItems = userItems[index].items
+    for(var i in tempItems) {
+      if(itemName == tempItems[i].name.toLowerCase()){
+        res.end("no")
+        return
+      }
     }
   }
-
-  var itemIndex = req.body.itemNumber - 1
 
   userItems[index].items[itemIndex].name = req.body.name
   userItems[index].items[itemIndex].quantity = req.body.quantity
