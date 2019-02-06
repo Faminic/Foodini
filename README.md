@@ -1,4 +1,4 @@
-# PP
+# Foodini
 
 An online inventory of everyday food items with additional features related to their expiry date.
 
