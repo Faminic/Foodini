@@ -1,6 +1,22 @@
 # PP
-A website to track current food items, their expiry dates and their place of storage
 
-Tracking current food items makes buying new food easier
-Tracking expiry dates makes cooking food and preventing food waste easier
-Tracking place of storage makes buying new food for that specific place of storage easier
+An online inventory of everyday food items with additional features related to their expiry date.
+
+# Run
+
+Install Node.js ([Node.js] (https://nodejs.org/en/download/)).
+
+Clone this repository and open command prompt, terminal or similar command line interface and move into the directory of the cloned file.
+
+Now run the following command to install all necessary Node.js components.
+
+```sh
+npm install
+```
+
+After installation, run the following command to start the server.
+
+```sh
+npm start
+```
+In your browser, go to "http://localhost:8080" to access the website.
