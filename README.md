@@ -4,7 +4,7 @@ An online inventory of everyday food items with additional features related to t
 
 # Run
 
-Install Node.js ([Node.js] (https://nodejs.org/en/download/)).
+Install Node.js [Node.js](https://nodejs.org/en/download/).
 
 Clone this repository and open command prompt, terminal or similar command line interface and move into the directory of the cloned file.
 
